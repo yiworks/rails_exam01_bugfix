@@ -15,6 +15,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    puts @blog
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else
@@ -42,6 +43,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title)
+    params.require(:blog).permit(:title, :content)
   end
 end
