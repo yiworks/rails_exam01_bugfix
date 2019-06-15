@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: %i[show edit update destroy]
 
   def index
     @blogs = Blog.all
@@ -15,7 +15,6 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    puts @blog
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else
