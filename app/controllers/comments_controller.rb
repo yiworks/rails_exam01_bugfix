@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_blog, only: [:create, :destroy]
+  before_action :set_blog, only: %i[create destroy]
 
   def create
     @comment = @blog.comments.create(comment_params)
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @blog.comments.find(params[:id])
     @comment.destroy
-    redirect_to
+    redirect_to @blog
   end
 
   private
